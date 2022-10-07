@@ -1,0 +1,83 @@
+Error handling is the fundamental principle of error handling says that function (method) should either:
+-Do what its name suggests
+-Indicate a problem
+-Any other behavior is incorrect
+
+Example:
+function sum(arr){
+    return "Invalid Input"
+    let result = 0;
+    for(let el of arr){
+        result += element;
+    }
+    return result;
+}
+let sumOfArray = sum([1,2,3]);
+console.log(sumOfArray);
+
+a function failed to do what its name suggests should:
+-Return special value e.g. undefined,false,-1,NaN etc.
+-throw an Error
+-exceptions indicate abnormal execution circumstances
+
+3 types of errors
+-Syntax errors
+-RunTime Error - during execution
+-Logical Errors
+
+throw new Error
+
+try-catch
+try{
+    sum("Something")
+} else {
+    catch(error){
+        console.log(error)
+    }
+}
+
+Unit testing
+A unit test is a piece of code that checks whether a certain functionality works as expected
+
+example:
+function sum(array){
+    let result = 0;
+    for(let number of array){
+        result += number;
+    }
+    return result;
+}
+console.log(sum([1,2,3]));
+console.log(sum([1,2,3,5,7]));
+console.log(sum([1]));
+
+Unit tests structure
+AAA: Arrange - declare all variables
+,act,assert
+
+
+Module is a set of function to be used in application
+. - current directory
+.. - one folder back
+
+Object decomposition 
+let obj ={
+    a:10,
+    b:20
+}
+let {a,b} = obj
+
+init node project
+we start project so we can 
+package lock json lock-json what package are installed
+
+for Mocha and Chai we make folder test and inside that folder we name the file with .test.js
+
+describe is category of test and It is the test
+
+on one test most of the time you need one assert you can have 2, but it is not very common
+it tests should have good description it should write what it should return if something happens
+
+for describe the name of the function and test functionality or function tests etc...
+// Example for tests description = 
+'should return undefined if parameter is number'

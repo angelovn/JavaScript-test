@@ -1,0 +1,140 @@
+I need to watch an Arrow function video 
+I need to use MORE arrowFunctions and More Spread Operator and MORE forEach() and MORE reduce()
+AND A LOT MORE OBJECTS and CLASSES and NESTED FUNCTIONS
+and charCodeAt() [ASCII] and Date() and CLOSURE AND CALLBACK FUNCTIONS and recursion
+
+A block statement is used to group zero or more statements. The block is delimited by a pair of braces ("curly brackets") and contains a list of zero or more statements and declarations.
+The scope is the current context of execution in which values and expressions are "visible" or can be referenced. If a variable or expression is not in the current scope, it will not be available for use. Scopes can also be layered in a hierarchy, so that child scopes have access to parent scopes, but not vice versa.
+
+
+What is function context ?????
+It is not defined with context.Runtime it define it's context
+The function context is the object that owns the currently executed code 
+Function context === this.object
+
+ARROW FUNCTION EXPLAINED:
+Normal
+const person = {
+    firstName: 'Pesho',
+    lastName: 'Georgiev',
+    introduce(){
+        const getFullName = function(){
+            return this.firstName + ' ' this.lastName
+        }
+        console.log(`Hello, my name is ${getFullName()}`)
+        //? This invocation is global and THIS will be the global context and will log undefined
+    }
+}
+In this example:
+Arrow function inherits the execution context from it's parent function [nested in other function]
+const person = {
+    firstName: 'Pesho',
+    lastName: 'Georgiev',
+    introduce(){
+        const getFullName = () =>{
+            return this.firstName + ' ' this.lastName
+        }
+        console.log(`Hello, my name is ${getFullName()}`)
+        //? This invocation is global and THIS will be the global context and will log undefined
+    }
+}
+
+Explicit Binding
+manipulate the context of a function with call(),apply()[/bind()]
+Example call():
+function introduce(firstName,lastName){
+    console.log(`Hello, ${firstName} ${lastName} my name is ${this.name}`)
+}
+introduce('Gosho','Ivanov')
+let objContext = {
+    name: 'pesho',
+}
+introduce.call(objContext,'Gosho','Ivanov')
+introduce.apply(objContext, ['Gosho','Ivanov']) // this is almost the same as call
+
+Example bind():
+let superHuman = {
+    name: 'Superman'
+}
+introduce.bind('superHuman','Lois','Lane') / it returns new function
+
+// when i want to run a file in the debug console write node ./nameOfFile
+
+CLOSURE
+Closure e zapazwane na promenlivi ot prikluchila function, kum koito ima referencii ot vutreshna function
+scope of an inner function includes the scope of the outer function\
+Example:
+function counterBuilder(){
+    let counter = 0;
+    return function(){
+        counter ++;
+        console.log(counter)
+    }
+}
+let counter = counterBuilder();
+
+function a(){
+    let name1 = 'asd'
+    function b(){
+        let name2 = 'asd'
+        function c(){
+            let name3 = 'asd
+            function d(){
+                let name4 = 'asd'
+                console.log(this);
+
+            }d()
+        }c()
+    }
+    b()
+}a()
+
+
+WHAT IS HIGHER ORDER FUNCTION 
+Takes other functions as an argument or return a function as a result
+
+the scope of let is the brackets in which it is in
+LET is accessible in the scope of the brackets in which it is defined it
+
+// 1. let lives in the curly brackets and cannot be accessed before initialization
+// 2. function declaration can be executed in the current function scopes
+// 3. function has access to the outer function scope but not the inner one
+// 4. Arrow functions do not have their own this. They use the this from the outer function
+
+var uses hoisting
+
+partial application !!!
+
+function sum(x,y,z){
+    return x + y + z;
+}
+function partialSum(x,y){
+    return function(z){
+        return sum(x,y,z)
+    }
+}
+
+We call partialSum with 2 parameters and it returns 10 and 20 and partialSum returns anonymous function with one parameter z and partial is = to this anonymous function
+let partial = partialSum(10,20);
+After that we initialize result which is equal that is the returned function from partialSum with 2 parameters x,y and now we call it with one extra parameter z = 30; and this anonymous function (partial) returns the sum function with 1 parameter passed in, but they are actually 3 from both function combined and then the sum function executes and returns the result into the result variable
+let result = partial(30);
+ 
+Currying !!
+
+function total(x,y,z){
+    return x + y + z;
+}
+
+function curriedSum(x){
+    return function(y){
+        return function(y){
+            return function(z){
+                return total(x,y,z)
+            }
+        }
+    }
+}
+let res = curriedSum(1)(2)(3)
+let first = curriedSum(1)
+let second = first(2)
+let result = second(3)

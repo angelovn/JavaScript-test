@@ -1,0 +1,12 @@
+What is execution context???? !!!!!!!! REALLY
+Execution context allow the JS engine to manage the complexity of interpreting and running my code
+Whenever js file runs a global execution context gets created
+it has 2 phases
+1. creates the global object(depends on envouriment), this and allocates memory for all functions yet to be created and creates a scope chain()
+2. execution phase. It reads the code line by line synchronous. When a function is getting invoked a new execution context gets created
+
+Js has no data type definitions. Type becomes known at runtime
+JS Engine
+Engine contains heap(store all the objects in the application) and callStack(where the code is executed)
+
+for function it also creates arguments object
