@@ -81,3 +81,6 @@ it tests should have good description it should write what it should return if s
 for describe the name of the function and test functionality or function tests etc...
 // Example for tests description = 
 'should return undefined if parameter is number'
+
+//? Hot-key combinations are shortcuts for performing common commands.
+At any moment, our current working directory is our current default directory, i.e., the directory that the computer assumes we want to run commands in, unless we explicitly specify something else.
